@@ -1,0 +1,4 @@
+turbine:
+  aggregator:
+    clusterConfig: hystrixdashboard-server
+  appConfig: hystrixdashboard-server
