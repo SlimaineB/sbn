@@ -6,6 +6,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
 
+//Run command : mvn gatling:test -Dgatling.simulationClass=slim.RampSimulation
 class RampSimulation extends Simulation {
 
 	val httpProtocol = http
@@ -21,5 +22,5 @@ class RampSimulation extends Simulation {
 		.exec(http("request_0")
 			.get("/first-business-service/getProductByCategoryNoDb/Legume"))
 
-	setUp(scn.inject(rampUsers(1500) over(50 seconds))).protocols(httpProtocol)
+	setUp(scn.inject(rampUsers(5000) over(50 seconds))).protocols(httpProtocol)
 }

@@ -19,6 +19,14 @@ public class NoDbDataServiceController {
 	public List<String> getProductByCategoryNoDb(@PathVariable String category) {
 
 		log.info("Calling getProductByCategory [" + category + "]");
+		
+		/*try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
 
 		return Arrays.asList("Tomate", "Courgette");
 
