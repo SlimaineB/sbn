@@ -1,0 +1,39 @@
+#Expose all metrics to Admin Server
+management.endpoints.web.exposure.include: '*'
+
+# Disable Hystrix timeout globally (for all services)
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+            
+
+# Increase the Ribbon timeout to 30s (globally)
+ribbon:
+    eureka:
+        enabled: true
+    ConnectTimeout: 30000
+    ReadTimeout: 30000
+
+
+
+zuul:
+  ignoredPatterns: /data-service/**, /admin-server/**
+
+
+#zuul.host.max-total-connections=10000
+#zuul.host.max-per-route-connections=10000
+#zuul.semaphore.max-semaphores=5000
+#
+#
+#zuul.routes.api-authors.path=/authors/**
+#zuul.routes.api-authors.serviceId=api-authors
+#zuul.routes.api-categories.path=/categories/**
+#zuul.routes.api-categories.serviceId=api-categories
+#zuul.routes.api-news.path=/news/**
+#zuul.routes.api-news.serviceId=api-news

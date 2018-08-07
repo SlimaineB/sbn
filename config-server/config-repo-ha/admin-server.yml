@@ -1,0 +1,67 @@
+---
+#Expose all metrics to Admin Server
+management:
+  endpoint.shutdown.enabled: true
+  endpoints.health.show-details: ALWAYS
+  endpoints.web.exposure.include: '*'
+  security:
+    enabled: false
+
+
+#Eureka config
+# Discovery server access
+eureka:
+ client:
+    prefer-same-zone-eureka: true
+    region: region-1
+    service-url:
+      zone1: http://localhost:8761/eureka/
+      zone2: http://127.0.0.1:8762/eureka/
+    availability-zones:
+      region-1: zone1,zone2
+
+#Spring config server properties
+health:
+ config:
+    enabled: false
+
+
+#Mail configuration
+
+spring:
+ mail.host: 127.0.0.1
+ mail.port: 25
+#UI login password
+ boot:
+  admin:
+   notify.mail.enabled: true
+   notify.mail.from: ld-siege-bdm-dma-odm-eai@labanquepostale.fr
+   notify.mail.to: slimaine.bensadoun-prestataire@labanquepostale.fr
+  profiles:
+    active: secure
+
+---
+spring:
+  profiles: insecure
+
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: "admin" #UI login password
+      password: "admin"
+  boot:
+    admin:
+      username: ${spring.security.user.name}      
+      password: ${spring.security.user.password}   
+      client:
+        username: ${spring.security.user.name}       #These two are needed so that the client
+        password: ${spring.security.user.password}   #can register at the protected server api
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}         #These two are needed so that the server
+            user.password: ${spring.security.user.password} #can access the protected client endpoints
+            
+logging.level.org.springframework.security: INFO
+
