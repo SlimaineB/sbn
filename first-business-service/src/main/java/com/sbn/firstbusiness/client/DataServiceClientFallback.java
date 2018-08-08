@@ -6,6 +6,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sbn.firstbusiness.dto.Product;
+
 import feign.FeignException;
 
 public class DataServiceClientFallback implements DataServiceClient {
@@ -26,9 +28,20 @@ public class DataServiceClientFallback implements DataServiceClient {
 			// Treat the HTTP 404 status
 		}
 
-		//log.error(rootCause.getStackTrace().toString());
+		log.error(rootCause.getMessage());
 		
 		return Arrays.asList("Emply From Fallback : "+rootCause);
 	}
 
+	@Override
+	public Product getProductByName(String name) {
+		
+		if (rootCause instanceof FeignException && ((FeignException) rootCause).status() == 404) {
+			// Treat the HTTP 404 status
+		}
+
+		log.error(rootCause.getStackTrace().toString());
+		
+		return null;
+	}
 }

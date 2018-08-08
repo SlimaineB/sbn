@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = { "com.sbn.nodbdata.client" })
+@EnableFeignClients(basePackages = { "com.sbn.nodbdata.nodbdata.client" })
 @EnableCircuitBreaker
 @EnableHystrix
 public class NoDbDataServiceApplication {

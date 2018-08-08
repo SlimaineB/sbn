@@ -1,7 +1,7 @@
 spring:
   profiles:
-    default: zone1
-    active: zone1
+   active: zone1
+   default: zone1
   zipkin:
     baseUrl: http://localhost:9411/
   datasource:

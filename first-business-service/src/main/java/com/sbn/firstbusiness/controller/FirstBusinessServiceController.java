@@ -1,5 +1,6 @@
 package com.sbn.firstbusiness.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sbn.firstbusiness.client.DataServiceClient;
 import com.sbn.firstbusiness.client.SecondServiceClient;
+import com.sbn.firstbusiness.dto.Product;
 
 @RestController
 public class FirstBusinessServiceController {
@@ -36,6 +38,14 @@ public class FirstBusinessServiceController {
 		return welcomeMessage;
 	}
 	
+	
+	@GetMapping("/tomate")
+	public String getTomateMessage() throws InterruptedException {
+		
+		//Thread.sleep(100);
+		// Complex Method
+		return "Tomate";
+	}
 
 	@RequestMapping(value = "/getProductByCategory/{category}", method = RequestMethod.GET)
 	public List<String> getProductByCategory(@PathVariable String category) {
@@ -52,6 +62,16 @@ public class FirstBusinessServiceController {
 		log.info("Calling getProductByCategoryNoDb ["+category+"]");
 
 		return secondServiceClient.getProductByCategoryNoDb(category);
+
+	}
+	
+	
+	@RequestMapping(value = "/getProductByName/{name}", method = RequestMethod.GET)
+	public Product getProductByName(@PathVariable String name) {
+		
+		log.info("Calling getProductByName ["+name+"]");
+
+		return new Product("Pomme",BigDecimal.valueOf(10.5));
 
 	}
 

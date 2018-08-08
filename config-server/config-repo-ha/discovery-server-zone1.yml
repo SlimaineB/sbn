@@ -3,3 +3,6 @@ eureka:
   instance:
     hostname: localhost
     metadataMap.zone: zone1
+  client:
+    registerWithEureka: false
+    fetchRegistry: false    

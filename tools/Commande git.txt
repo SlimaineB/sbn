@@ -1,0 +1,124 @@
+
+#Désactiver les erreurs SSL
+git config --global http.sslVerify false
+
+
+#Crééer une branche à partir de la develop
+git checkout develop
+git checkout -b RM_21466
+
+
+#Annuler les modification dans l'index et revenir au dernier commit
+git reset --hard
+
+#Ajouter mes modifications au dernier commit effectué
+git commit --amend
+
+#Afficher l'aide d'u,e commande
+<<taper la commande>> --help
+
+#Ouvrir interface graphique
+gitk&
+
+#Pour merger des commits et avoir un seul commentaire
+
+git reset --soft "HEAD^"
+git commit --amend
+
+#Pour supprimer une branche locale
+git branch -d the_local_branch
+
+#Pour supprimer une branche distante
+git push origin --delete the_remote_branch
+
+
+#Pour faire une release
+
+git checkout master
+git fetch origin
+git rebase origin/master
+
+git checkout develop
+git fetch origin
+git rebase origin/develop
+
+#On intègre les modifs de la develop dans notre branche
+git checkout RM_*
+git rebase develop
+
+#On integre nos modif dans la develop
+git checkout develop
+git rebase RM_*
+
+#Corriger les conflits et faire pour aller au conflit suivant
+git add .
+git rebase --continue
+
+
+#Pour appliquer un commit particulier d'une autre branche sur la branch actuelle
+git cherry-pick 62ecb3
+
+#Suppression d'un tag distant
+git push --delete origin version-7.1.0.0 
+
+
+#Suppression d'un tracking de branch
+git branch -d -r origin/RM_21466
+
+Historique :
+
+
+ 65  git clone https://xhvz209@sgl1shn04.f1nom0a.local:8443/r/eaiadmin.git
+   66  git config http.sslVerify false
+   67  git clone https://xhvz209@sgl1shn04.f1nom0a.local:8443/r/eaiadmin.git
+   68  git config http.sslVerify false
+   69  git config --global http.sslVerify false
+   70  git clone https://xhvz209@sgl1shn04.f1nom0a.local:8443/r/eaiadmin.git
+   71  cd ..
+   72  git clone https://xhvz209@sgl1shn04.f1nom0a.local:8443/r/eaiadmin.git
+   73  git branch -a
+   74  cd eaiadmin/
+   75  git branch -a
+   76  git orgin -v
+   77  git origin -v
+   78  git remote -v
+   79  git checkout develop
+   80  git checkout -b RM_21466
+   81  git branch -v
+   82  git branch -a
+   83  gitk&
+   84  st
+   85  git add .
+   86  st
+   87  git reset --hard
+   88  git add .
+   89  gitk&
+   90  git commit -m 'changement de version'
+   91  gitk&
+   92  git reset --hard
+   93  git push -f origin RM_21466
+   94  git checkout develop
+   95  git checkout RM_21466
+   96  st
+   97  git checkout develop
+   98  git reset --hard
+   99  git checkout develop
+  100  git checkout RM_21466
+  101  gitk&
+  102  git add .
+  103  git commit -m 'changement de version'
+  104  gitk&
+  105  gitk&
+  106  git add .
+  107  git commit --amend
+  108  gitk&
+  109  git fetch origin
+  110  git branch -a
+  111  git fetch --help
+  112  git checkout develop
+  113  git fetch origin -p
+  114  git branch -a
+  115  git branch -D RM_21466
+  116  git branch -a
+  117  git checkout -b RM_21466
+  118  history

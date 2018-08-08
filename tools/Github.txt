@@ -1,0 +1,19 @@
+git clone -c http.sslVerify=false https://github.com/SlimaineB/sbn.git
+git config --global http.proxy http://xhvz209:f3C%28e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080
+git config --global --unset http.proxy
+
+
+
+yarn config set proxy http://xhvz209:f3C%28e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080
+yarn config set https-proxy http://xhvz209:f3C%28e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080
+
+npm config set proxy http://xhvz209:f3C%28e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080
+npm config set https-proxy http://xhvz209:f3C%28e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080
+
+npm --https-proxy='http://xhvz209:f3C(e4K%40@surf-lbr.pasi.log.intra.laposte.fr:8080/' install --save-dev angular-ide
+
+
+https://www.jhipster.tech/jdl-studio/ pour générer le modèle de données (fichier .jdl)
+
+https://www.jhipster.tech/jdl/ pour importer une nouvelle entity (à partir du .jdl, on genere le front to back ) :
+jhipster import-jdl ./my-jdl-file.jdl

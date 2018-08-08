@@ -4,19 +4,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sbn</groupId>
+	<groupId>${parent.groupId}</groupId>
 	<artifactId>react-data-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${parent.version}</version>
 	<packaging>jar</packaging>
 
 	<name>react-data-service</name>
 	<description>Reactive data dervice</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.sbn</groupId>
+		<artifactId>micro-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../micro-service-base/pom.xml</relativePath>
 	</parent>
 
 	<properties>
@@ -68,17 +68,6 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>

@@ -4,27 +4,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sbn</groupId>
+	<groupId>${parent.groupId}</groupId>
 	<artifactId>admin-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${parent.version}</version>
 	<packaging>jar</packaging>
 
 	<name>admin-server</name>
+	<description>Administration Server</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.sbn</groupId>
+		<artifactId>micro-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../micro-service-base/pom.xml</relativePath>
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-boot-admin.version>2.0.1</spring-boot-admin.version>
-		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-		<revision>2.0.1</revision>
+
 	</properties>
 
 	<dependencies>
@@ -48,20 +44,11 @@
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-sample-custom-ui</artifactId>
-		</dependency> -->
-
-<!-- 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -73,31 +60,7 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 
-			<dependency>
-				<groupId>de.codecentric</groupId>
-				<artifactId>spring-boot-admin-dependencies</artifactId>
-				<version>${spring-boot-admin.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
-			<!-- <dependency>
-				<groupId>de.codecentric</groupId>
-				<artifactId>spring-boot-admin-sample-custom-ui</artifactId>
-				<version>${revision}</version>
-			</dependency> -->
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -117,5 +80,5 @@
 	</build>
 
 
-	<description>Administration Server</description>
+
 </project>

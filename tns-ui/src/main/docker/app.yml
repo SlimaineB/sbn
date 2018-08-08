@@ -1,0 +1,14 @@
+version: '2'
+services:
+    tns_ui-app:
+        image: tns_ui
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://tns_ui-mysql:3306/tns_ui?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    tns_ui-mysql:
+        extends:
+            file: mysql.yml
+            service: tns_ui-mysql

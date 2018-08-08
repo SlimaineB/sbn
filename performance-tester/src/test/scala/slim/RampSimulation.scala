@@ -10,7 +10,7 @@ import io.gatling.jdbc.Predef._
 class RampSimulation extends Simulation {
 
 	val httpProtocol = http
-		.baseURL("http://localhost:8762")
+		.baseURL("http://localhost:8765")
 		.inferHtmlResources()
 		.acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
 		.acceptEncodingHeader("gzip, deflate")
@@ -20,7 +20,7 @@ class RampSimulation extends Simulation {
 
 	val scn = scenario("RampSimulation")
 		.exec(http("request_0")
-			.get("/first-business-service/getProductByCategoryNoDb/Legume"))
+			.get("/first-business-service/getProductByCategory/Legume"))
 
-	setUp(scn.inject(rampUsers(5000) over(50 seconds))).protocols(httpProtocol)
+	setUp(scn.inject(rampUsers(5000) over(5 seconds))).protocols(httpProtocol)
 }
