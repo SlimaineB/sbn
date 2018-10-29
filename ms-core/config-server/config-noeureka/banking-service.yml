@@ -1,0 +1,15 @@
+#server:
+# tomcat:
+#  max-connections: 400
+#  max-threads: 400
+  
+#Expose all metrics to Admin Server
+
+
+
+
+
+  
+
+    
+  

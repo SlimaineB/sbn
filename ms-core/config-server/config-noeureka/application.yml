@@ -1,0 +1,73 @@
+welcome.message : Welcome from main config server
+
+#Expose all metrics to Admin Server
+health:
+ config:
+    enabled: false
+management:
+  endpoint.shutdown.enabled: true
+  endpoints.web.exposure.include: '*'
+  security:
+    enabled: false
+
+# Tell Feign to enable Hystrix
+feign:
+  hystrix:
+    enabled: false
+
+#Disable Eureka
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+            
+# Increase the Ribbon timeout to 10s (globally)
+ribbon:
+    eureka:
+        enabled: false
+    ConnectTimeout: 10000
+    ReadTimeout: 10000
+    
+#spring:
+#  profiles:
+#    default: zone1
+#    active: zone1
+#  zipkin:
+#    baseUrl: http://localhost:9411/
+
+    
+#hystrix:
+#  command.default.execution.timeout.enabled: false  
+#  threadpool:
+#    default:
+#      coreSize: 200 ##
+#      maxQueueSize: 200 ##BlockingQueue
+#      queueSizeRejectionThreshold: 50 ##maxQueueSize queueSizeRejectionThreshold
+#      execution:
+#        timeout:
+#          enabled: false
+#        isolation:
+#          strategy: THREAD
+#          semaphore:
+#            maxConcurrentRequests: 1000
+#          thread:
+#            timeoutInMilliseconds: 30000
+
+# Disable Hystrix timeout globally (for all services)
+# Increase the Hystrix timeout to 10s (globally)
+
+#hystrix:
+#  command:
+#    default:
+#      coreSize: 500
+#      maximumSize: 1000
+##      maxQueueSize: -1
+#      execution:
+#        timeout:
+#          enabled: false
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000
+ 
+ 
+ 
