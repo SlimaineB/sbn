@@ -20,7 +20,7 @@ class RampSimulationAsync extends Simulation {
 
 	val scn = scenario("RampSimulationAsync")
 		.exec(http("request_0")
-			.get("/waitTimeAsync2/300"))
+			.get("/waitTimeAsync3/300"))
 
-	setUp(scn.inject(rampUsers(500) over(5 seconds))).protocols(httpProtocol)
+	setUp(scn.inject(rampUsers(1000) over(5 seconds))).protocols(httpProtocol)
 }
