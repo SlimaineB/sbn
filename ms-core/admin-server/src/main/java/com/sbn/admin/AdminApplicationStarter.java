@@ -44,7 +44,7 @@ public class AdminApplicationStarter {
     @Profile("secure")
     public SecurityWebFilterChain securityWebFilterChainSecure(ServerHttpSecurity http) {
         // @formatter:off
-        return http.authorizeExchange()
+       return http.authorizeExchange()
                 .pathMatchers(adminContextPath + "/assets/**").permitAll()
                 .pathMatchers(adminContextPath + "/login").permitAll()
                 .pathMatchers(adminContextPath + "/actuator/**").permitAll()
@@ -56,6 +56,9 @@ public class AdminApplicationStarter {
             .csrf().disable()
             .build();
         // @formatter:on
+        
+     /*  return  http.authorizeExchange().anyExchange().permitAll()  
+        .and().csrf().disable().build();*/
     }
     
     @Bean

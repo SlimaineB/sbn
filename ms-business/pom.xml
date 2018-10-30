@@ -24,8 +24,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
-		<spring-boot-admin.version>2.0.1</spring-boot-admin.version>
-		<revision>2.0.1</revision>
+		<spring-boot-admin.version>2.0.4</spring-boot-admin.version>
 	</properties>
 
 	<modules>
@@ -34,6 +33,14 @@
 		<module>referential-service</module>
 	</modules>
 
+	<!--  Dev env only : For automatic restart after code update  -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>

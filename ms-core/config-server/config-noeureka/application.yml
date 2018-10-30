@@ -70,4 +70,11 @@ ribbon:
 #            timeoutInMilliseconds: 60000
  
  
+#UI login password
+spring.boot.admin.client:
+    url: http://localhost:8083
+    instance:
+      metadata:
+        user.name: admin
+        user.password: admin
  

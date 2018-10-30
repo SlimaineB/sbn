@@ -11,9 +11,9 @@ class RampSimulationDynamic extends Simulation {
 
   val baseUrl: String = System.getProperty("baseUrl")
   val methodUrl: String = System.getProperty("methodUrl")
-  val nbUsers = Integer.getInteger("nbUsers", 1)
-  val rampTime = Integer.getInteger("rampTime", 1)
-  val nbRepeats: Int = System.getProperty("nbRepeats").toInt
+  val nbUsers: Int = Integer.getInteger("nbUsers", 1).toInt
+  val rampTime: Int = Integer.getInteger("rampTime", 1).toInt
+  val nbRepeats: Int = Integer.getInteger("nbRepeats", 1).toInt
   
   
   val httpProtocol = http
