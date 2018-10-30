@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @FeignClient(name = "banking-service")
-public interface BankingServiceClient {
+public interface BankingClient {
 	
 	
 	@RequestMapping(value = "/waitTimeSync/{timeToWait}", method = RequestMethod.GET)
 	public String waitTimeSync(@PathVariable Integer timeToWait);
 
-	
-//	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
-//	public Mono<String> waitTimeAsync(@PathVariable Integer timeToWait);
-	
 	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
 	public String waitTimeAsync(@PathVariable Integer timeToWait);
+	
+	@RequestMapping(value = "/debitAmount/{accountNumber}/{amount}", method = RequestMethod.GET)
+	public String debitAmount(@PathVariable String accountNumber, @PathVariable Integer amount);
 }
 
 

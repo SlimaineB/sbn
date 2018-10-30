@@ -23,10 +23,10 @@ class RampSimulationAsync extends Simulation {
     .userAgentHeader("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0")
 
   val scn = scenario("RampSimulationAsync").exec(
-    repeat(30) {
+    repeat(1) {
       exec(
-        http("request_0").get("/waitTimeAsync/300")
+        http("request_0").get("/waitTimeAsync4/300")
         ).pause(1 second, 2 seconds)
     })
-  setUp(scn.inject(rampUsers(1000) over (5 seconds))).protocols(httpProtocol)
+  setUp(scn.inject(rampUsers(200) over (5 seconds))).protocols(httpProtocol)
 }

@@ -1,0 +1,32 @@
+#server:
+# tomcat:
+#  max-connections: 400
+#  max-threads: 400
+
+banking-service:
+  ribbon:
+    eureka:
+      enabled: false 
+    listOfServers: localhost:8092,localhost:9095
+    ServerListRefreshInterval: 15000
+
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+#        loggerLevel: basic
+        
+referential-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8093,localhost:9093
+    ServerListRefreshInterval: 15000
+
+logging:
+ level:
+  root: info
+ file: target/app.log
+ 

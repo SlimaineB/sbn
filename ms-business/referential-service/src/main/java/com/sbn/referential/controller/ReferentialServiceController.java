@@ -1,49 +1,45 @@
 package com.sbn.referential.controller;
 
-import java.util.Arrays;
-import java.util.List;
+import java.time.Duration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import reactor.core.publisher.Mono;
 
 @RestController
 public class ReferentialServiceController {
 
 	private static Logger log = LoggerFactory.getLogger(ReferentialServiceController.class);
 
-	@RequestMapping(value = "/getProductByCategory/{category}", method = RequestMethod.GET)
-	public List<String> getProductByCategoryNoDb(@PathVariable String category) {
+	@RequestMapping(value = "/waitTimeSync/{timeToWait}", method = RequestMethod.GET)
+	public String waitTimeSync(@PathVariable Integer timeToWait) {
 
-		log.info("Calling getProductByCategory [" + category + "]");
-		
-		/*try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		try {
-			Thread.sleep(500);
+			Thread.sleep(timeToWait);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return Arrays.asList("Tomate", "Courgette");
-
+		return  "OK Referential waitTimeSync "+timeToWait;
 	}
 
 	
-	@GetMapping("/tomate")
-	public String getTomateMessage() throws InterruptedException {
-		
-		//Thread.sleep(100);
-		// Complex Method
-		return "Tomate";
+	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
+	public Mono<String> waitTimeAsync(@PathVariable Integer timeToWait) {
+
+		return Mono.just("OK Referential waitTimeAsync "+timeToWait)
+        .delayElement(Duration.ofMillis(timeToWait));
+
+	}
+	
+	@RequestMapping(value = "/getClientAccount/{clientName}", method = RequestMethod.GET)
+	public Mono<String> getClientAccount(@PathVariable String clientName) {
+		return Mono.just(clientName+"_001122")
+		        .delayElement(Duration.ofMillis(200));
 	}
 }

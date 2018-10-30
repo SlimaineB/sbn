@@ -45,10 +45,7 @@ public class AdminApplicationStarter {
     public SecurityWebFilterChain securityWebFilterChainSecure(ServerHttpSecurity http) {
         // @formatter:off
        return http.authorizeExchange()
-                .pathMatchers(adminContextPath + "/assets/**").permitAll()
-                .pathMatchers(adminContextPath + "/login").permitAll()
-                .pathMatchers(adminContextPath + "/actuator/**").permitAll()
-                .anyExchange().authenticated()
+                .anyExchange().permitAll()
                 .and()
             .formLogin().loginPage(adminContextPath + "/login").and()
             .logout().logoutUrl(adminContextPath + "/logout").and()
@@ -57,8 +54,6 @@ public class AdminApplicationStarter {
             .build();
         // @formatter:on
         
-     /*  return  http.authorizeExchange().anyExchange().permitAll()  
-        .and().csrf().disable().build();*/
     }
     
     @Bean

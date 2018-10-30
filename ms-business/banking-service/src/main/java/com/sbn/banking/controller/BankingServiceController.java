@@ -18,9 +18,8 @@ public class BankingServiceController {
 	private static Logger log = LoggerFactory.getLogger(BankingServiceController.class);
 
 	@Autowired
-	ReactService reactiveService;
+	AsyncService reactiveService;
 
-	
 	@RequestMapping(value = "/waitTimeSync/{timeToWait}", method = RequestMethod.GET)
 	public String waitTimeSync(@PathVariable Integer timeToWait) {
 
@@ -30,19 +29,21 @@ public class BankingServiceController {
 			e.printStackTrace();
 		}
 
-		return  "OK waiting "+timeToWait;
+		return "OK waitTimeSync " + timeToWait;
 	}
 
-	
 	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
 	public Mono<String> waitTimeAsync(@PathVariable Integer timeToWait) {
 
-		return Mono.just("OK waiting "+timeToWait)
-        .delayElement(Duration.ofMillis(timeToWait));
+		return Mono.just("OK Banking waitTimeAsync " + timeToWait).delayElement(Duration.ofMillis(timeToWait));
 
 	}
 	
-	
+	@RequestMapping(value = "/debitAmount/{accountNumber}/{amount}", method = RequestMethod.GET)
+	public Mono<String> debitAmount(@PathVariable String accountNumber, @PathVariable Integer amount) {
+		return Mono.just("OK account debited with amount of "+amount).delayElement(Duration.ofMillis(300));
+	}
+
 //	
 //	@RequestMapping(value = "/getProductByCategory/{category}", method = RequestMethod.GET)
 //	public Mono<List<String>> getProductByCategory(@PathVariable String category) {

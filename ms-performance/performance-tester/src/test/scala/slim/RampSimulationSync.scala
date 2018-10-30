@@ -22,5 +22,5 @@ class RampSimulationSync extends Simulation {
 		.exec(http("request_0")
 			.get("/waitTimeSync/300"))
 
-	setUp(scn.inject(rampUsers(500) over(5 seconds))).protocols(httpProtocol)
+	setUp(scn.inject(rampUsers(200) over(5 seconds))).protocols(httpProtocol)
 }

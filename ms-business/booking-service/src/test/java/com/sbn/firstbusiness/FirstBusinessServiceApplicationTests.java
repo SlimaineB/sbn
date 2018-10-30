@@ -15,14 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ServerList;
-import com.sbn.booking.client.BankingServiceClient;
+import com.sbn.booking.client.BankingClient;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = { "feign.hystrix.enabled=true" })
 public class FirstBusinessServiceApplicationTests {
 
 	@Autowired
-	BankingServiceClient dataServiceClient;
+	BankingClient dataServiceClient;
 
 	@ClassRule
 	public static WireMockClassRule wiremock = new WireMockClassRule(wireMockConfig().dynamicPort());
