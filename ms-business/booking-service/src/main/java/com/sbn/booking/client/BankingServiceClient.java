@@ -1,6 +1,7 @@
 package com.sbn.booking.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,9 @@ public interface BankingServiceClient {
 	
 	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
 	public String waitTimeAsync(@PathVariable Integer timeToWait);
+
+	@RequestMapping(value = "/throwException/{timeToWait}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> throwException(@PathVariable Integer timeToWait) throws Exception ;
 }
 
 

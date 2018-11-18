@@ -1,5 +1,6 @@
 package com.sbn.booking.controller;
 
+import java.time.Duration;
 import java.util.concurrent.Callable;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.sbn.booking.MyBadRequestException;
 import com.sbn.booking.client.BankingAsynServiceClient;
 import com.sbn.booking.client.BankingServiceClient;
 
@@ -53,6 +55,21 @@ public class BookingServiceController {
 	@RequestMapping(value = "/waitTimeSync/{timeToWait}", method = RequestMethod.GET)
 	public String waitTimeSync(@PathVariable Integer timeToWait) {
 		return bankingServiceClient.waitTimeSync(timeToWait);
+	}
+	
+	@RequestMapping(value = "/throwException/{timeToWait}", method = RequestMethod.GET)
+	public String throwException(@PathVariable Integer timeToWait) throws Exception {
+		
+		String value = null;
+		try {
+		
+			value = bankingServiceClient.throwException(timeToWait).toString();
+		}
+		 catch(MyBadRequestException myBad) {
+			 System.out.println(myBad);
+		 }
+		
+		return value;
 	}
 
 	/*
@@ -96,7 +113,9 @@ public class BookingServiceController {
 	@RequestMapping(value = "/waitTimeAsync/{timeToWait}", method = RequestMethod.GET)
 	public Mono<String> waitTimeAsync(@PathVariable Integer timeToWait) {
 
-		return blockingGet(() -> bankingServiceClient.waitTimeAsync(timeToWait));
+		//return blockingGet(() -> bankingServiceClient.waitTimeAsync(timeToWait));
+		
+		return Mono.just("Toto").delayElement(Duration.ofMillis(timeToWait));
 
 	}
 
