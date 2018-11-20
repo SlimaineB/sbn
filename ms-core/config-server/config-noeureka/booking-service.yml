@@ -10,9 +10,10 @@ banking-service:
     listOfServers: localhost:8092,localhost:8092
     ServerListRefreshInterval: 15000
 
+logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 
-logging:
- level:
-  root: error
- file: target/app.log
+#logging:
+# level:
+#  root: info
+# file: target/app.log
  
